@@ -16,15 +16,18 @@
     </ion-card>
     <ion-card>
       <ion-item>
-        <span>Max:</span>
+        <span>Max: &nbsp;</span>
+        <span>{{ (temperature.temp_max - 273.15).toFixed(0) }}°</span>
       </ion-item>
 
       <ion-item>
-        <span>Min:</span>
+        <span>Min: &nbsp;</span>
+        <span>{{ (temperature.temp_min - 273.15).toFixed(0) }}°</span>
       </ion-item>
 
       <ion-item>
         <span>Humidity: </span>
+        <span>{{ temperature.humidity }}</span>
       </ion-item>
     </ion-card>
   </ion-content>
