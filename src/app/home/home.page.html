@@ -1,7 +1,31 @@
 <ion-header [translucent]="true">
   <ion-content [fullscreen]="true">
     <ion-card>
-      
+      <ion-item lines="none">
+        <p>Today's Report:</p>
+        <ion-label slot="end">{{ date | date: 'EEE dd MMM' }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <span> {{ (temperature.temp - 273.15).toFixed(0) }}° </span>
+        <img slot="end" [src]="finalIcon" />
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon name="location"> </ion-icon>
+        <span> {{ city }} </span>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <span>Max:</span>
+      </ion-item>
+
+      <ion-item>
+        <span>Min:</span>
+      </ion-item>
+
+      <ion-item>
+        <span>Humidity: </span>
+      </ion-item>
     </ion-card>
   </ion-content>
 </ion-header>
