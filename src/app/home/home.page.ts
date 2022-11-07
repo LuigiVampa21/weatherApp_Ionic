@@ -1,12 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '../services/weather.service';
+import { tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  constructor() {}
+  temperature: any;
+
+  constructor(private weatherService: WeatherService) { }
+
+  ngOnInit(){
+    this.loadData();
+  }
+
+  loadData(){
+    this.weatherService.getWeather()
+        .subscribe( (data: any) => {
+          this.temperature = data.main;
+        });
+  }
 
 }
+
