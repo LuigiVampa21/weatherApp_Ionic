@@ -14,20 +14,23 @@ export class HomePage implements OnInit {
   city: string;
   icon: string;
   finalIcon: string;
+  name: string;
+  isLoading: boolean;
 
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit(){
-    this.loadData();
   }
 
   loadData(){
-    this.weatherService.getWeather()
+    this.isLoading = true;
+    this.weatherService.getWeather(this.city)
         .subscribe( (data: any) => {
           this.temperature = data.main;
-          this.city = data.name;
+          this.name = data.name;
           this.icon = data.weather[0].icon;
           this.finalIcon = `http://openweathermap.org/img/wn/${this.icon}@4x.png`;
+          this.isLoading = false;
         });
   }
 

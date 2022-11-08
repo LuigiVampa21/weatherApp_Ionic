@@ -1,27 +1,35 @@
-#container {
-  text-align: center;
+#searchBar{
+  --ion-background-color: #3B7E88 !important;
+  // color: white;
+}
 
+.cardStyle{
+  border: 20px;
+  --ion-background-color: #3B7E88;
+  span{
+    color: white;
+    font-weight: 300;
+  }
+}
+
+#temp{
+  font-weight: 300;
+  font-size: 4em;
+  margin: 5px;
+}
+
+#locationIcon{
+  color: #F6B844;
+}
+
+#date{
+  color: #F6B844;
+}
+
+.spinner{
+  font-size: 10rem;
   position: absolute;
-  left: 0;
-  right: 0;
   top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

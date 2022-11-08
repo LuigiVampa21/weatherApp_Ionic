@@ -13,7 +13,9 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  getWeather(city?: string){
-    return this.http.get(`${API_URL}/weather?q=${ city ? city : 'Nice'}&&appid=${API_KEY}`);
+  // getWeather(city?: string){
+  getWeather(city: string){
+    // return this.http.get(`${API_URL}/weather?q=${ city ? city : 'Nice'}&&appid=${API_KEY}`);
+    return this.http.get(`${API_URL}/weather?q=${city}&&appid=${API_KEY}`);
   }
 }

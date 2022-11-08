@@ -1,34 +1,54 @@
 <ion-header [translucent]="true">
   <ion-content [fullscreen]="true">
-    <ion-card>
-      <ion-item lines="none">
-        <p>Today's Report:</p>
-        <ion-label slot="end">{{ date | date: 'EEE dd MMM' }}</ion-label>
-      </ion-item>
-      <ion-item>
-        <span> {{ (temperature.temp - 273.15).toFixed(0) }}° </span>
-        <img slot="end" [src]="finalIcon" />
-      </ion-item>
-      <ion-item lines="none">
-        <ion-icon name="location"> </ion-icon>
-        <span> {{ city }} </span>
-      </ion-item>
-    </ion-card>
-    <ion-card>
-      <ion-item>
-        <span>Max: &nbsp;</span>
-        <span>{{ (temperature.temp_max - 273.15).toFixed(0) }}°</span>
-      </ion-item>
+    <div style="text-align: center; margin: 15px">
+      <ion-label style="font-size: 1.5em; font-weight: 400"
+        >Weather Forecast</ion-label
+      >
+    </div>
+    <ion-searchbar
+      id="searchBar"
+      animated
+      placeholder="Search by city"
+      [(ngModel)]="city"
+      (ngModelChange)="loadData()"
+    ></ion-searchbar>
+    <div *ngIf="!isLoading">
+      <ion-card class="cardStyle">
+        <ion-item lines="none">
+          <p style="font-weight: 500; color: white">Today's Report:</p>
+          <ion-label id="date" slot="end"
+            >{{ date | date: 'EEE dd MMM' }}</ion-label
+          >
+        </ion-item>
+        <ion-item>
+          <span id="temp"> {{ (temperature.temp - 273.15).toFixed(0) }}° </span>
+          <img slot="end" [src]="finalIcon" />
+        </ion-item>
+        <ion-item lines="none">
+          <ion-icon id="locationIcon" name="location"> </ion-icon>
+          <span> {{ city }} </span>
+        </ion-item>
+      </ion-card>
+      <ion-card class="cardStyle">
+        <ion-item>
+          <span>Max: &nbsp;</span>
+          <span>{{ (temperature.temp_max - 273.15).toFixed(0) }}°</span>
+        </ion-item>
 
-      <ion-item>
-        <span>Min: &nbsp;</span>
-        <span>{{ (temperature.temp_min - 273.15).toFixed(0) }}°</span>
-      </ion-item>
+        <ion-item>
+          <span>Min: &nbsp;</span>
+          <span>{{ (temperature.temp_min - 273.15).toFixed(0) }}°</span>
+        </ion-item>
 
-      <ion-item>
-        <span>Humidity: </span>
-        <span>{{ temperature.humidity }}</span>
-      </ion-item>
-    </ion-card>
+        <ion-item>
+          <span>Humidity: &nbsp;</span>
+          <span>{{ temperature.humidity }}</span>
+        </ion-item>
+      </ion-card>
+    </div>
+    <div *ngIf="isLoading">
+      <img class="spinner" src="assets/pic2.png" />
+      <span>Waiting for data..</span>
+    </div>
   </ion-content>
 </ion-header>
